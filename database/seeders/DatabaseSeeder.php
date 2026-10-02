@@ -29,13 +29,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         DB::table("users")->insert([
-            "name" => Str::random(10),
-            "email" => Str::random(10) . '@gmail.com',
+            "name" => "sarmad",
+            "email" => 'abc@gmail.com',
             "email_verified_at" => now(),
-            "password" => Str::random(10),
+            "password" => "897qw45893",
             "remember_token" => Str::random(30),
-            "created_at" => now(),
-            "updated_at" => now(),
+
 
         ]);
     }
