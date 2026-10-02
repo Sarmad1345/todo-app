@@ -19,8 +19,11 @@ class DatabaseSeeder extends Seeder
             "name" => "sarmad",
             "email" => 'abc@gmail.com',
             "email_verified_at" => now(),
-            "password" => Hash::make("897qw45893"),
+            "password" => Str::random(10),
             "remember_token" => Str::random(30),
+            "created_at" => now(),
+            "updated_at" => now(),
+
         ]);
     }
 }
