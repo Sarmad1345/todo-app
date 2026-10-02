@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTodoRequest;
 use App\Models\Todo;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -21,14 +22,15 @@ class TodoController
         return view('todos.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, StoreTodoRequest $storeTodoRequest)
     {
-        $validated = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string'],
-        ]);
+        $data = $storeTodoRequest->validated();
 
-        Todo::create($validated);
+        Todo::create($data);
+
+        // $validated = $request->validate();
+
+        // Todo::create($validated);
 
         return redirect()->route('todos.index')->with('success', 'Todo added.');
     }
